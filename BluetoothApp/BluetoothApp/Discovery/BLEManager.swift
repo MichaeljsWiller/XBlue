@@ -70,6 +70,7 @@ extension BLEManager: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        peripheral.delegate = self
         let peripheralName = peripheral.name ?? "Unknown"
         
         let check = peripherals.contains { value in
@@ -90,9 +91,6 @@ extension BLEManager: CBCentralManagerDelegate {
                 advertData.append(newAdvertData)
                 print("key: \(key), value \(value)")
             }
-    
-            // Discover peripheral services
-            peripheral.discoverServices(nil)
             // Create new peripheral
             let newPeripheral = Peripheral(
                 name: peripheralName,
@@ -105,6 +103,7 @@ extension BLEManager: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        peripheral.discoverServices(nil)
         print("connected to \(peripheral)")
     }
     
@@ -118,7 +117,9 @@ extension BLEManager: CBCentralManagerDelegate {
 extension BLEManager: CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        guard let device = connectedDevice else { return }
         guard let services = peripheral.services else { return }
+        device.getServices()
         for service in services {
             print(service)
         }

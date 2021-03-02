@@ -27,7 +27,6 @@ class Peripheral: Identifiable {
         self.rssi = rssi
         self.peripheral = peripheral
         self.advertData = advertData
-        getServices()
     }
     
     /// Discovers a list of all the peripherals services
