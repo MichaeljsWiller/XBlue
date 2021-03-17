@@ -38,46 +38,52 @@ struct DeviceInfoView: View {
                     }
                 }
                 // List displaying advert data
-                //List {
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack {
-                            Section(header: Text("ADVERTISEMENT DATA")
-                                        .font(.system(size: 20, design: .rounded))
-                                        .foregroundColor(.gray)
-                                        .padding(.leading)) {
-                                Spacer()
-                                Button("Show") {
-                                    self.isShowing.toggle()
-                                }.foregroundColor(.blue).padding(.trailing)
-                            }
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        Section(header: Text("ADVERTISEMENT DATA")
+                                    .font(.system(size: 20, design: .rounded))
+                                    .foregroundColor(.gray)
+                                    .padding(.leading)) {
+                            Spacer()
+                            Button("Show") {
+                                self.isShowing.toggle()
+                            }.foregroundColor(.blue).padding(.trailing)
                         }
-                        if isShowing {
-                            List(connectedDevice.advertData) { data in
-                                VStack {
-                                    Text(data.name)
-                                    Text(data.value)
-                                }
-                            }
-                        }
-                        
-                        // List of services
-                        List(connectedDevice.services) { service in
-                            
-                            Section(header: Text(service.uuid)
-                                        .font(.system(size: 20, design: .rounded))
-                                        .foregroundColor(.gray)) {
-                                
+                    }
+                    if isShowing {
+                        List(connectedDevice.advertData) { data in
+                            VStack {
+                                Text(data.name)
+                                Text(data.value)
                             }
                         }
                     }
-               /// }
-                Spacer()
+                    
+                    // List of services
+                    List(connectedDevice.services) { service in
+                        Section(header: Text("UUID: \(service.uuid)")
+                                    .font(.system(size: 20, design: .rounded))
+                                    .foregroundColor(.gray)) {
+                            List(service.characteristics) { characteristic in
+                                VStack {
+                                    Text("0x\(characteristic.uuid)")
+                                    Text("Properties:")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if let connectedDevice = bleManager.connectedDevice,
+           bleManager.connectedDevice?.peripheral.state == .connected {
+            VStack(alignment: .center) {
                 Button("Disconnect") {
                     bleManager.disconnect(peripheral: connectedDevice.peripheral)
                 }
                 .frame(width: 280, height: 50, alignment: .center)
-                .cornerRadius(10)
                 .background(Color.red)
+                .cornerRadius(10)
             }
         }
     }
