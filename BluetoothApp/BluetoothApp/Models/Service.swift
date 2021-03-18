@@ -26,7 +26,7 @@ class Service: Identifiable {
     
     func getCharacteristics() {
         guard let characteristics = service.characteristics else { return }
-        for characteristic in characteristics {
+        for characteristic in characteristics { 
             let newCharacteristic = Characteristic(characteristc: characteristic,
                                                    uuid: characteristic.uuid.uuidString)
             self.characteristics.append(newCharacteristic)

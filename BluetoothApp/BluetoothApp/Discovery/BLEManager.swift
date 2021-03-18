@@ -40,6 +40,7 @@ class BLEManager: NSObject, ObservableObject {
     /// disconnects from the selected device
     func disconnect(peripheral: CBPeripheral) {
         centralManager.cancelPeripheralConnection(peripheral)
+        resetConnectedDevice()
         print("disconnecting from \(peripheral)")
     }
     
@@ -54,6 +55,16 @@ class BLEManager: NSObject, ObservableObject {
         stopScan()
         peripherals = []
         print("Peripheral list has been reset")
+    }
+    
+    func resetConnectedDevice() {
+        if let device = connectedDevice,
+           let services = connectedDevice?.services {
+            device.services = []
+            for service in services {
+                service.characteristics = []
+            }
+        }
     }
 }
 
@@ -121,14 +132,21 @@ extension BLEManager: CBPeripheralDelegate {
         guard let services = peripheral.services else { return }
         device.getServices()
         for service in services {
+            peripheral.discoverCharacteristics(nil, for: service)
             print(service)
         }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let characteristics = service.characteristics else { return }
+        guard let device = connectedDevice else { return }
+        for DeviceService in device.services  {
+            if DeviceService.service.uuid == service.uuid {
+                DeviceService.getCharacteristics()
+            }
+        }
         for characteristic in characteristics {
-            print(characteristic)
+            print("new characteristic discovered \(characteristic)")
         }
     }
     
