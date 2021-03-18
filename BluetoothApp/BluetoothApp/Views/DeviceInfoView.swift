@@ -29,7 +29,8 @@ struct DeviceInfoView: View {
 
                     } else {
                         Section(header: Text(connectedDevice.peripheral.state.stateToString().lowercased().capitalized)
-                                    .font(.system(size:14, design: .rounded))
+                                    .font(.system(size:14
+                                                  , design: .rounded))
                                     .foregroundColor(.green)
                                     .padding(-10)
                                     .padding(.top, -20)) {}
@@ -74,6 +75,7 @@ struct DeviceInfoView: View {
                 }
                 .frame(width: 280, height: 50, alignment: .center)
                 .background(Color.red)
+                .foregroundColor(.white)
                 .cornerRadius(10)
             }
         } else {
