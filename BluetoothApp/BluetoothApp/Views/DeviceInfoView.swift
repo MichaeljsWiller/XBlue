@@ -12,6 +12,7 @@ struct DeviceInfoView: View {
     @EnvironmentObject var bleManager: BLEManager
     @State var isShowing = false
     
+    // TODO: - Split into seperate views
     var body: some View {
         List {
             if let connectedDevice = bleManager.connectedDevice {

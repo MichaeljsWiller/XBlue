@@ -15,7 +15,7 @@ struct BluetoothAppApp: App {
         WindowGroup {
             NavigationView {
                 ContentView()
-                    .navigationBarTitle("DarkGreen", displayMode: .inline)
+                    .navigationBarTitle("XBlue", displayMode: .inline)
             }
             .environmentObject(bleManger)
         }
