@@ -9,7 +9,8 @@ import SwiftUI
 
 struct DeviceInfoView: View {
     
-    @EnvironmentObject var bleManager: BLEManager
+    @EnvironmentObject private var bleManager: BLEManager
+    /// Whether the advertisement data is showing or not
     @State var isShowing = false
     
     // TODO: - Split into seperate views
@@ -55,11 +56,12 @@ struct DeviceInfoView: View {
                                 .padding(.bottom)
                                 .padding(-5)) {
                         ForEach(service.characteristics) { characteristic in
-                            VStack(alignment: .leading) {
-                                Button("0x\(characteristic.uuid)") {
-                                    
-                                }.font(.system(size:20))
-                                Text("Properties:").font(.system(size:14, weight: .light, design: .rounded))
+                            
+                            NavigationLink(destination: CharacteristicInfoView(characteristic: characteristic, serviceUUID: service.uuid)) {
+                                VStack(alignment: .leading) {
+                                    Text("0x\(characteristic.uuid)").font(.system(size:20, weight: .light))
+                                    Text("Properties: \(characteristic.characteristc.properties.propertyToString())").font(.system(size:14, weight: .ultraLight, design: .rounded))
+                                }
                             }
                         }
                     }
@@ -100,7 +102,7 @@ struct ConnectingView: View {
                     .progressViewStyle(CircularProgressViewStyle(tint: .blue))
                     .padding(.bottom)
             }
-        }.padding(-10).padding(.top, -20)
+        }.padding(-10).padding(.top, -25)
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var bleManager: BLEManager
+    @EnvironmentObject private var bleManager: BLEManager
     
     var body: some View {
         if bleManager.isSwitchOn {
@@ -24,8 +24,7 @@ struct ContentView: View {
 
 struct BluetoothOnView: View {
     
-    @EnvironmentObject var bleManager: BLEManager
-    @State private var showingDetail = false
+    @EnvironmentObject private var bleManager: BLEManager
     @State private var isScanning = false
     
     var body: some View {

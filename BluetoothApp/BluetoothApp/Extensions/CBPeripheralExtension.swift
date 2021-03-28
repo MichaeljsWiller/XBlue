@@ -27,4 +27,31 @@ extension CBPeripheralState {
     }
 }
 
-
+extension CBCharacteristicProperties {
+    func propertyToString() -> String {
+        switch self {
+        case .authenticatedSignedWrites:
+            return "Authenticated Signed Writes"
+        case .broadcast:
+            return "Broadcast"
+        case .extendedProperties:
+            return "Extended Properties"
+        case .indicate:
+            return "Indicate"
+        case .indicateEncryptionRequired:
+            return "Indicate Encryption Required"
+        case .notify:
+            return "Notify"
+        case .notifyEncryptionRequired:
+            return "Notify Encryption Required"
+        case .read:
+            return "Read"
+        case .write:
+            return "Write"
+        case .writeWithoutResponse:
+            return "writeWithoutResponse"
+        default:
+            return "Unknown Property"
+        }
+    }
+}

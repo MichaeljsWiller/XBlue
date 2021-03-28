@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		AA3208A925D5E0F20015548E /* DeviceInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3208A825D5E0F20015548E /* DeviceInfoView.swift */; };
 		AA3208AD25D5E1550015548E /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3208AC25D5E1550015548E /* Peripheral.swift */; };
-		AA3208B025D5E2260015548E /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3208AF25D5E2260015548E /* ContentViewModel.swift */; };
-		AA3208B425D5E2440015548E /* DeviceInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3208B325D5E2440015548E /* DeviceInfoViewModel.swift */; };
+		AAC50E502603F707008E70F1 /* CharacteristicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC50E4F2603F707008E70F1 /* CharacteristicInfoView.swift */; };
 		AAD21E8D25D4B4CD0094EF70 /* BluetoothAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD21E8C25D4B4CD0094EF70 /* BluetoothAppApp.swift */; };
 		AAD21E8F25D4B4CD0094EF70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD21E8E25D4B4CD0094EF70 /* ContentView.swift */; };
 		AAD21E9125D4B4CE0094EF70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD21E9025D4B4CE0094EF70 /* Assets.xcassets */; };
@@ -24,8 +23,7 @@
 /* Begin PBXFileReference section */
 		AA3208A825D5E0F20015548E /* DeviceInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoView.swift; sourceTree = "<group>"; };
 		AA3208AC25D5E1550015548E /* Peripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
-		AA3208AF25D5E2260015548E /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		AA3208B325D5E2440015548E /* DeviceInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoViewModel.swift; sourceTree = "<group>"; };
+		AAC50E4F2603F707008E70F1 /* CharacteristicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicInfoView.swift; sourceTree = "<group>"; };
 		AAD21E8925D4B4CD0094EF70 /* BluetoothApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD21E8C25D4B4CD0094EF70 /* BluetoothAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothAppApp.swift; sourceTree = "<group>"; };
 		AAD21E8E25D4B4CD0094EF70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,20 +57,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		AA3208A525D5E0BA0015548E /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				AA3208AF25D5E2260015548E /* ContentViewModel.swift */,
-				AA3208B325D5E2440015548E /* DeviceInfoViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		AA3208A625D5E0C10015548E /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				AAD21E8E25D4B4CD0094EF70 /* ContentView.swift */,
 				AA3208A825D5E0F20015548E /* DeviceInfoView.swift */,
+				AAC50E4F2603F707008E70F1 /* CharacteristicInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -98,7 +88,6 @@
 			children = (
 				AAD21E9C25D4B4ED0094EF70 /* Discovery */,
 				AA3208A325D5E0910015548E /* Models */,
-				AA3208A525D5E0BA0015548E /* ViewModels */,
 				AA3208A625D5E0C10015548E /* Views */,
 				AAEE4CFC25ED95ED00AC5A7F /* Extensions */,
 				AAD21E8C25D4B4CD0094EF70 /* BluetoothAppApp.swift */,
@@ -205,10 +194,9 @@
 				AA3208AD25D5E1550015548E /* Peripheral.swift in Sources */,
 				AAD21E8F25D4B4CD0094EF70 /* ContentView.swift in Sources */,
 				AAF3463525EDC1FF005CAED5 /* AdvertData.swift in Sources */,
-				AA3208B025D5E2260015548E /* ContentViewModel.swift in Sources */,
 				AAD21E9E25D4B4F90094EF70 /* BLEManager.swift in Sources */,
-				AA3208B425D5E2440015548E /* DeviceInfoViewModel.swift in Sources */,
 				AA3208A925D5E0F20015548E /* DeviceInfoView.swift in Sources */,
+				AAC50E502603F707008E70F1 /* CharacteristicInfoView.swift in Sources */,
 				AAF3463925EDC617005CAED5 /* Service.swift in Sources */,
 				AAEE4CFE25ED960800AC5A7F /* CBPeripheralExtension.swift in Sources */,
 				AAD21E8D25D4B4CD0094EF70 /* BluetoothAppApp.swift in Sources */,
