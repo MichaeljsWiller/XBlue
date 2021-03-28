@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreBluetooth
 
 struct CharacteristicInfoView: View {
     @EnvironmentObject var bleManager: BLEManager
@@ -85,6 +86,7 @@ struct WritePropertyView: View {
     @EnvironmentObject private var bleManager: BLEManager
     @State var writtenValues: [String] = []
     @State var properties: [String] = []
+    let characteristic: CBCharacteristic
     
     var body: some View {
         Section(header: Text("WRITTEN VALUES")
